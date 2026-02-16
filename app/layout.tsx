@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+// import "./globals.css";
+import { initStoryblok } from "./lib/storyblok";
+initStoryblok();
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
