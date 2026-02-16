@@ -67,7 +67,7 @@ export default function FAQSection({ blok }: { blok: FAQSectionBlok }) {
      * It just adds metadata attributes like:
      *   data-blok-c="..."
      */
-    <section {...storyblokEditable(blok)} style={{ padding: 24 }}>
+    <section {...storyblokEditable(blok)} >
       
       {/* Render section title if provided */}
       <h2 style={{ marginBottom: 12 }}>

@@ -28,7 +28,6 @@ import { storyblokInit, apiPlugin } from "@storyblok/react/rsc";
  * the component names inside Storyblok.
  */
 import Page from "../components/storyblok/Page";
-// import Hero from "../components/storyblok/Hero";
 import Hero from "../components/storyblok/Hero";
 import Section from "../components/storyblok/Section";
 import FAQSection from "../components/storyblok/FAQSection";
@@ -44,39 +43,39 @@ import FAQItem from "../components/storyblok/FAQItem";
  * If we call it multiple times, weird things happen.
  */
 export function initStoryblok() {
-  storyblokInit({
-    /**
-     * accessToken:
-     * This comes from your .env.local file.
-     *
-     * Right now we're using the PREVIEW token.
-     * That allows us to see draft content.
-     */
-    accessToken: process.env.STORYBLOK_TOKEN_PREVIEW,
+	storyblokInit({
+		/**
+		 * accessToken:
+		 * This comes from your .env.local file.
+		 *
+		 * Right now we're using the PREVIEW token.
+		 * That allows us to see draft content.
+		 */
+		accessToken: process.env.STORYBLOK_TOKEN_PREVIEW,
 
-    /**
-     * apiPlugin:
-     * This enables the Storyblok API client.
-     * Without this, we can't fetch stories.
-     */
-    use: [apiPlugin],
+		/**
+		 * apiPlugin:
+		 * This enables the Storyblok API client.
+		 * Without this, we can't fetch stories.
+		 */
+		use: [apiPlugin],
 
-    /**
-     * components:
-     *
-     * This is the IMPORTANT PART.
-     *
-     * We map Storyblok block names → React components.
-     *
-     * The key MUST match the block name inside Storyblok.
-     * The value is the React component file.
-     */
-    components: {
-      Page,
-      Hero,
-      Section,
-      FAQSection,
-      FAQItem,
-    },
-  });
+		/**
+		 * components:
+		 *
+		 * This is the IMPORTANT PART.
+		 *
+		 * We map Storyblok block names → React components.
+		 *
+		 * The key MUST match the block name inside Storyblok.
+		 * The value is the React component file.
+		 */
+		components: {
+			page: Page,
+			hero: Hero,
+			section: Section,
+			faqsection: FAQSection,
+			faqitem: FAQItem,
+		},
+	});
 }

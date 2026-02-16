@@ -12,24 +12,37 @@
  * rendering to StoryblokComponent.
  */
 
-import { storyblokEditable, type SbBlokData } from "@storyblok/react/rsc";
-import { StoryblokComponent } from "@storyblok/react";
+import {
+	storyblokEditable,
+	StoryblokServerComponent,
+	type SbBlokData,
+} from "@storyblok/react/rsc";
 
 type PageBlok = SbBlokData & {
-  body?: SbBlokData[]; // nested blocks
+	body?: SbBlokData[]; // nested blocks
 };
 
 export default function Page({ blok }: { blok: PageBlok }) {
-  const body = blok.body ?? [];
+	const body = blok.body ?? [];
 
-  return (
-    <main {...storyblokEditable(blok)}>
-      {body.map((nestedBlok) => (
-        <StoryblokComponent
-          blok={nestedBlok}
-          key={nestedBlok._uid}
-        />
-      ))}
-    </main>
-  );
+	return (
+		<main {...storyblokEditable(blok)}>
+			<div
+				style={{
+					maxWidth: 1100,
+					margin: "0 auto",
+					padding: "0 24px",
+					display: "grid",
+					gap: 48,
+				}}
+			>
+				{body.map((nestedBlok) => (
+					<StoryblokServerComponent
+						blok={nestedBlok}
+						key={nestedBlok._uid}
+					/>
+				))}
+			</div>
+		</main>
+	);
 }

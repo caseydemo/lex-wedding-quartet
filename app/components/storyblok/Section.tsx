@@ -1,23 +1,34 @@
 /**
- * Storyblok "Section" block component
+ * Section
  *
- * For now this is a simple placeholder so the build succeeds.
- * We'll expand it later to render nested blocks, content, styling, etc.
+ * A simple content section block for marketing pages.
+ * Storyblok fields:
+ * - headline (Text)
+ * - content (Textarea)
+ *
+ * storyblokEditable(blok) adds invisible attributes so the Visual Editor can
+ * highlight/click this exact block in the editor.
  */
 
 import { storyblokEditable, type SbBlokData } from "@storyblok/react/rsc";
 
 type SectionBlok = SbBlokData & {
-  // We'll add real fields later (headline, body, etc.)
+  headline?: string;
+  content?: string;
 };
 
 export default function Section({ blok }: { blok: SectionBlok }) {
   return (
     <section {...storyblokEditable(blok)}>
-      {/* Placeholder output so you can see it's rendering */}
-      <div style={{ padding: 24 }}>
-        <strong>Section</strong>
-      </div>
+      {blok.headline ? (
+        <h2 style={{ margin: 0, marginBottom: 10 }}>{blok.headline}</h2>
+      ) : null}
+
+      {blok.content ? (
+        <p style={{ margin: 0, maxWidth: 760, lineHeight: 1.6 }}>
+          {blok.content}
+        </p>
+      ) : null}
     </section>
   );
 }

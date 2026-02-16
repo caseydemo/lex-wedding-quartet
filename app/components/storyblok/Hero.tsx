@@ -13,42 +13,73 @@
 import { storyblokEditable, type SbBlokData } from "@storyblok/react/rsc";
 
 type HeroBlok = SbBlokData & {
-  headline?: string;
-  subheadline?: string;
-  cta_label?: string;
-  cta_link?: {
-    cached_url?: string; // Storyblok commonly provides this for links
-    url?: string;        // sometimes used depending on link type
-  };
+	headline?: string;
+	subheadline?: string;
+	cta_label?: string;
+	cta_link?: {
+		cached_url?: string; // Storyblok commonly provides this for links
+		url?: string; // sometimes used depending on link type
+	};
 };
 
 export default function Hero({ blok }: { blok: HeroBlok }) {
-  const href = blok.cta_link?.cached_url || blok.cta_link?.url || "#";
+	const href = blok.cta_link?.cached_url || blok.cta_link?.url || "#";
 
-  return (
-    <section {...storyblokEditable(blok)} style={{ padding: 48 }}>
-      <h1 style={{ fontSize: 40, margin: 0 }}>
-        {blok.headline ?? "Wedding Quartet"}
-      </h1>
+	return (
+		<section {...storyblokEditable(blok)}>
+			<div style={{ paddingTop: 64, paddingBottom: 24 }}>
+				<div
+					style={{
+						letterSpacing: "0.08em",
+						textTransform: "uppercase",
+						fontSize: 12,
+						opacity: 0.7,
+						marginBottom: 14,
+					}}
+				>
+					Wedding Music
+				</div>
 
-      <p style={{ marginTop: 12, fontSize: 18, maxWidth: 640 }}>
-        {blok.subheadline ?? "Elegant live music for your ceremony and cocktail hour."}
-      </p>
+				<h1
+					style={{
+						fontSize: 44,
+						lineHeight: 1.05,
+						margin: 0,
+						maxWidth: 900,
+					}}
+				>
+					{blok.headline ?? "Wedding Quartet"}
+				</h1>
 
-      <div style={{ marginTop: 20 }}>
-        <a
-          href={href}
-          style={{
-            display: "inline-block",
-            padding: "12px 16px",
-            border: "1px solid currentColor",
-            borderRadius: 10,
-            textDecoration: "none",
-          }}
-        >
-          {blok.cta_label ?? "Check availability"}
-        </a>
-      </div>
-    </section>
-  );
+				<p
+					style={{
+						marginTop: 16,
+						fontSize: 18,
+						lineHeight: 1.6,
+						maxWidth: 720,
+						opacity: 0.9,
+					}}
+				>
+					{blok.subheadline ??
+						"Elegant live music for your ceremony and cocktail hour."}
+				</p>
+
+				<div style={{ marginTop: 22 }}>
+					<a
+						href={href}
+						style={{
+							display: "inline-block",
+							padding: "12px 16px",
+							border: "1px solid currentColor",
+							borderRadius: 12,
+							textDecoration: "none",
+							fontWeight: 600,
+						}}
+					>
+						{blok.cta_label ?? "Check availability"}
+					</a>
+				</div>
+			</div>
+		</section>
+	);
 }
