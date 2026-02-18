@@ -23,7 +23,9 @@ type HeroBlok = SbBlokData & {
 };
 
 export default function Hero({ blok }: { blok: HeroBlok }) {
-	const href = blok.cta_link?.cached_url || blok.cta_link?.url || "#";
+	const href =
+		blok.cta_link?.url ||
+		(blok.cta_link?.cached_url ? `/${blok.cta_link.cached_url}` : "#");
 
 	return (
 		<section {...storyblokEditable(blok)}>

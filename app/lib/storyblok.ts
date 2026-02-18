@@ -32,6 +32,8 @@ import Hero from "../components/storyblok/Hero";
 import Section from "../components/storyblok/Section";
 import FAQSection from "../components/storyblok/FAQSection";
 import FAQItem from "../components/storyblok/FAQItem";
+import TestimonialSection from "../components/TestimonialSection";
+import Testimonial from "../components/Testimonial";
 
 /**
  * This function initializes Storyblok.
@@ -76,6 +78,8 @@ export function initStoryblok() {
 			section: Section,
 			faqsection: FAQSection,
 			faqitem: FAQItem,
+			testimonialsection: TestimonialSection,
+			testimonial: Testimonial,
 		},
 	});
 }

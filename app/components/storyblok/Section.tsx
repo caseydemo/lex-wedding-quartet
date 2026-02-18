@@ -11,24 +11,17 @@
  */
 
 import { storyblokEditable, type SbBlokData } from "@storyblok/react/rsc";
+import Blocks from "../Blocks";
 
 type SectionBlok = SbBlokData & {
-  headline?: string;
-  content?: string;
+	headline?: string;
+	content?: string;
 };
 
 export default function Section({ blok }: { blok: SectionBlok }) {
-  return (
-    <section {...storyblokEditable(blok)}>
-      {blok.headline ? (
-        <h2 style={{ margin: 0, marginBottom: 10 }}>{blok.headline}</h2>
-      ) : null}
-
-      {blok.content ? (
-        <p style={{ margin: 0, maxWidth: 760, lineHeight: 1.6 }}>
-          {blok.content}
-        </p>
-      ) : null}
-    </section>
-  );
+	return (
+		<section {...storyblokEditable(blok)}>
+			<Blocks blocks={blok.blocks} />
+		</section>
+	);
 }
